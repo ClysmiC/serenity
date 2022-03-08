@@ -51,6 +51,10 @@ SpinBox::SpinBox()
 
 SpinBox::~SpinBox()
 {
+    // TextEditor can outlive the SpinBox if a deferred invocation is in flight.
+    // Cancel the deferred invocation to avoid use-after-free.
+    if (m_editor)
+        m_editor->on_change = nullptr;
 }
 
 void SpinBox::set_value(int value, AllowCallback allow_callback)
