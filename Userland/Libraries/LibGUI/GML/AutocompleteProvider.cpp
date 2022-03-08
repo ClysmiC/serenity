@@ -143,12 +143,14 @@ void AutocompleteProvider::provide_completions(Function<void(Vector<Entry>)> cal
         // FIXME: Don't show properties that are already specified in the scope.
         auto registration = Core::ObjectClassRegistration::find(class_name);
         if (registration && (registration->is_derived_from(widget_class) || registration->is_derived_from(layout_class))) {
+            dbgln("111111111");
             if (auto instance = registration->construct()) {
                 for (auto& it : instance->properties()) {
                     if (!it.value->is_readonly() && it.key.matches(pattern))
                         identifier_entries.empend(String::formatted("{}: ", it.key), partial_input_length, Language::Unspecified, it.key);
                 }
             }
+            dbgln("222222222");
         }
 
         if (can_have_declared_layout(class_names.last()) && "layout"sv.matches(pattern))
