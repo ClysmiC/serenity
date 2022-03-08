@@ -13,14 +13,13 @@ namespace PixelPaint {
 class ResizeImageDialog final : public GUI::Dialog {
     C_OBJECT(ResizeImageDialog);
 
+public:
+    Gfx::IntSize const& new_size() const { return m_new_size; }
+
 private:
     ResizeImageDialog(Gfx::IntSize const& suggested_size, GUI::Window* parent_window);
 
     Gfx::IntSize m_new_size;
-
-    RefPtr<GUI::SpinBox> m_width_spinbox;
-    RefPtr<GUI::SpinBox> m_height_spinbox;
-    RefPtr<GUI::ComboBox> m_anchor_combobox;
 };
 
 }

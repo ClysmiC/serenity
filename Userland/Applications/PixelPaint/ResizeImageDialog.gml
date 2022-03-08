@@ -88,8 +88,21 @@
         }
     }
 
-    @GUI::Button {
-        text: "OK"
-        max_width: 75
+    @GUI::Widget {
+        layout: @GUI::HorizontalBoxLayout {}
+
+        @GUI::Widget {}
+
+        @GUI::Button {
+            name: "ok_button"
+            text: "OK"
+            max_width: 75
+        }
+
+        @GUI::Button {
+            name: "cancel_button"
+            text: "Cancel"
+            max_width: 75
+        }
     }
 }
